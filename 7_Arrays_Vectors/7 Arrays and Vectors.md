@@ -1,0 +1,156 @@
+# Arrays and Vectors
+
+## Arrays
+### What is an array?
+An array is fixed size, sequential collection of elements all of the same type, stored contiguosly in memory.
+Properties:
+- Fixed length (can not grow or shrink)
+- All elements share the same type
+- Elements are indexed starting from 0
+- Fast access due to contiguous memory
+
+**Example idea**
+A shelf with boxxes side by side where each box stores the same kind of item.
+
+### Why we use arrays
+Arrays are used when we need:
+- To store multiple values under one name
+- Fast random access (constant O(1) time)
+- Predictable memory layout
+- High efficiency for low level or performance critical code.
+
+**Examples**
+- Storing sensor readings
+- Managing ist of grades, scores, or temperatures
+- Buffers in embedded systems or network programming
+
+### Declaration and Initialization
+#### Declaring an array
+```cpp
+type arrayName[size];
+```
+**Example:**
+```cpp
+int numbers[5];
+```
+This creates space for 5 integers
+
+#### Initializing an array
+**Full initialization**
+```cpp
+int scores[5] = {10, 20, 30, 40, 50};
+```
+
+**Partial initialization (Others become 0)**
+```cpp
+int data[5] = {1, 2}; // becomes {1,2,0,0,0}
+```
+
+**Implicit size**
+```cpp
+int primes[] = {2, 3, 5, 6, 11};    // the compiler determines that the size is 5
+```
+
+**Default Initialization (global arrays only)**
+```cpp
+int arr[10]; // global -> all elements = 0
+```
+Local arrays have garbage values unless initilalized
+However global set all the elements to 0
+
+### Accessing Array Elements
+Elemetns are accessed using the index operator `[ ]`
+#### Access to an element
+```cpp
+int values[3] = {10, 20, 30};
+cout << values[0];  // prints 10
+cout << values[2];  // prints 30
+```
+
+#### modifying elements
+```cpp
+int values[3] = {10, 20, 30};
+values[1] = 99; // array becomes {10, 99, 30}
+```
+
+#### Important considerations
+Array do not perform bound checking and this can overwrite memory and cause runtime error
+So, it's important to know the size of the array.
+```cpp
+int a[3];
+a[10] = 5; // Undefined behavior
+```
+
+## Multidimensional Arrays
+A multidimensional array is an array of arrays.
+The most common is the two dimensional array, typically used to represent tables, matrices, or grinds.
+
+### Declaration
+```cpp
+int matrix[3][4]; // 3 rows, 4 columns
+```
+
+### Initialization
+```cpp
+int matrix[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+```
+
+### Access
+```cpp
+cout << matrix[0][1]; //prints 2 (row 0, column 1)
+```
+
+**Memory layout**
+Elements are stored in row major order (row by row)
+
+## Vectors
+### What they are
+A vector is a dynamic array from the C++ standar library `<vector>`
+it can grow or shring in size automatically
+```cpp
+#include <vector>
+std::vector<int> numbers;
+```
+
+Vectors provide:
+- Automatic memory management
+- Safe access methods
+- Flexible and modern container usage
+- Rich functionality (insertions, deletions, iterations, etc.)
+
+### Vectors vs Arrays
+| Feature             | Arrays              | Vectors                         |
+| ------------------- | ------------------- | ------------------------------- |
+| Size                | Fixed               | Dynamic                         |
+| Memory              | Contiguous          | Contiguous                      |
+| Initialization      | Manual              | Easy & flexible                 |
+| Safety              | No bounds check     | `at()` provides bounds checking |
+| Functions available | Almost none         | Many (push_back, size, clear…)  |
+| Recommended use?    | Low-level, embedded | General C++ programming         |
+
+**Key advantages of vectors:**
+- Dynamic resizing (`push_back`, `pop_back`)
+- Size tracking via `.size()`
+- Safe access with `.at()`
+- Can be copied, passed to functions, returned from functions
+- Work naturally with modern C++ features (range based for, iterators)
+
+### Declaration and Initialization
+
+
+
+
+
+-Arrays
+    What they are
+    Why we use arrays
+    Declaration and initialization
+    Accessing array elements
+- Multidimensional arrays
+-Vectors
+    What they are
+    Advantages vs arrays
+    Declaration and initialization
