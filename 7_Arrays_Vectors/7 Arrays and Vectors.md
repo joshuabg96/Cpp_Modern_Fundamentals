@@ -23,6 +23,16 @@ A shelf with boxes side by side where each box stores the same kind of item.
 - Very efficient
 - Iteration is often used to process
 
+### How is it works?
+The Array variable saves the direction of the first element or where the array starts and if we want to write, read or modify one element of the array the compiler calculate, based on the array's data type how many byte it has to mode forware to access to the correct value.
+
+For example:
+```cpp
+int array[] = {1,2,3,4,5};
+array[0] = 0;               // To modify the value it has to move 0 spaces forward
+array[4] = 10;              // To modify the value it has to move 4 bytes * 4 spaces forward to point to the correct space
+```
+
 ### Why we use arrays
 Arrays are used when we need:
 - To store multiple values under one name
@@ -120,10 +130,16 @@ Elements are stored in row major order (row by row)
 ## Vectors
 ### What they are
 A vector is a dynamic array from the C++ standar library `<vector>`
-it can grow or shring in size automatically
+it can grow or shrink in size automatically
 ```cpp
 #include <vector>
 std::vector<int> numbers;
+```
+or usigin namespaces
+```cpp
+#include <vector>
+using namespace std
+vector<int> numbers (10);   // Vector of 10 integers
 ```
 
 Vectors provide:
@@ -131,6 +147,15 @@ Vectors provide:
 - Safe access methods
 - Flexible and modern container usage
 - Rich functionality (insertions, deletions, iterations, etc.)
+
+Characteristics:
+- Dynamic size
+- Elements are all the same type
+- Stored contiguosly in memory
+- Individual elements can be accessed by their position or index
+- Provides may useful function that do bounds check
+- Elements initialized to zero
+- Very efficient.
 
 ### Vectors vs Arrays
 | Feature             | Arrays              | Vectors                         |
@@ -178,7 +203,7 @@ cout << v.at(2); // safe access with exceptions
 
 **Adding elements**
 ```cpp
-v.push_back(99);
+v.push_back(99);            // Add an element at the end of the vector
 ```
 
 **Removing last elements**
@@ -189,6 +214,25 @@ v.pop_back()
 **Getting Size**
 ```cpp
 cout << v.size();
+```
+
+**Multidimensional Vectors**
+```cpp
+#include <vector>
+using namespace std;
+// We are creating a vector of vectors
+vector <vector<int>> movie_rating
+{
+    {1,2,3,4},
+    {1,2,3,4},
+    {1,2,3,4}
+};
+```
+
+**Access to multidimensional vectors**
+```cpp
+cout << movie_ratings[0][0] << endl;            // we can access as an array
+cout << movie_rating.at(0).at(0) << endl;       // We can access using .at() too
 ```
 
 ## Sumary
