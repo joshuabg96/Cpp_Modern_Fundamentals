@@ -3,6 +3,7 @@
 ## Arrays
 ### What is an array?
 An array is fixed size, sequential collection of elements all of the same type, stored contiguosly in memory.
+So this is a compund data type or data structure because it is a collection of elements and all the elements are of the same type.
 Properties:
 - Fixed length (can not grow or shrink)
 - All elements share the same type
@@ -10,7 +11,17 @@ Properties:
 - Fast access due to contiguous memory
 
 **Example idea**
-A shelf with boxxes side by side where each box stores the same kind of item.
+A shelf with boxes side by side where each box stores the same kind of item.
+
+**Characteristics**
+- Fixed size
+- Elements are all the same type
+- Stored contiguously in memory
+- Individual elements can be accessed by their position or index
+- First element is at index 0 and last element at index size -1
+- No checking to see if you are out of bounds
+- Very efficient
+- Iteration is often used to process
 
 ### Why we use arrays
 Arrays are used when we need:
@@ -139,18 +150,50 @@ Vectors provide:
 - Work naturally with modern C++ features (range based for, iterators)
 
 ### Declaration and Initialization
+**Empty Vector**
+```cpp
+std::vector<int> v;
+```
 
+**Vector with size N (default initialized)**
+```cpp
+std::vector<int> v(5);   // {0,0,0,0,0}
+```
 
+**Vector with size N and initial value**
+```cpp
+std::vector<int> v(5, 10);  // {10,10,10,10,10}
+```
 
+**Initialization list**
+```cpp
+std::vector<int> v = {1, 2, 3, 4};
+```
 
+**Accessing elements**
+```cpp
+cout << v[0];   // no bounds checking
+cout << v.at(2); // safe access with exceptions
+```
 
--Arrays
-    What they are
-    Why we use arrays
-    Declaration and initialization
-    Accessing array elements
-- Multidimensional arrays
--Vectors
-    What they are
-    Advantages vs arrays
-    Declaration and initialization
+**Adding elements**
+```cpp
+v.push_back(99);
+```
+
+**Removing last elements**
+```cpp
+v.pop_back()
+```
+
+**Getting Size**
+```cpp
+cout << v.size();
+```
+
+## Sumary
+- Array: Fixed size, contiguous block of same type elements
+- Vector: Dynamic, resizable array with usefil features
+- Access: `array[index]` or `vector.at(index)`
+- Multidimensional array: Array of arrays (matrix)
+- Vector advantages: Safety, flexibility, functions, dynamic size
